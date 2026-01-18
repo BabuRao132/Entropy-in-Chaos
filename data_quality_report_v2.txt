@@ -1,0 +1,176 @@
+✅ DATA QUALITY VALIDATION REPORT (with Plots)
+Generated at: 2026-01-18 15:17:55.433866
+
+======================================================================
+TABLE: loan_applications
+======================================================================
+Rows: 500 | Columns: 14
+
+📌 Column Data Types:
+               column          dtype
+       application_id          int64
+          customer_id          int64
+                  age        float64
+               gender         object
+      employment_type         object
+      declared_income         object
+          loan_amount         object
+   loan_tenure_months          int64
+         loan_purpose         object
+       existing_loans        float64
+ delinquency_count_6m         object
+delinquency_count_12m         object
+last_delinquency_date         object
+           created_at datetime64[ns]
+
+📌 Missing Values (Top 15):
+                       missing_count  missing_pct
+gender                            96         19.2
+employment_type                   73         14.6
+delinquency_count_12m             39          7.8
+declared_income                   35          7.0
+delinquency_count_6m              25          5.0
+last_delinquency_date             24          4.8
+loan_amount                       21          4.2
+age                               18          3.6
+existing_loans                    15          3.0
+customer_id                        0          0.0
+application_id                     0          0.0
+loan_tenure_months                 0          0.0
+loan_purpose                       0          0.0
+created_at                         0          0.0
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id']): 0
+
+✅ Saved duplicates-removed file: cleaned_loan_applications.csv
+
+📌 Numeric Summary (describe):
+                        count           mean            std       min        25%       50%        75%        max
+declared_income_num     439.0  665605.337130  303676.890749  153066.0  400689.50  641768.0  928560.50  1199906.0
+loan_amount_num         453.0  431934.269316  214459.834994   51206.0  252472.00  430320.0  616931.00   799579.0
+loan_tenure_months_num  500.0      19.908000      21.286092     -12.0       6.00      18.0      36.00       60.0
+existing_loans_num      485.0       2.806186       1.741438       0.0       1.00       3.0       4.00        5.0
+application_id          500.0     250.500000     144.481833       1.0     125.75     250.5     375.25      500.0
+customer_id             500.0  100249.500000     144.481833  100000.0  100124.75  100249.5  100374.25   100499.0
+age                     482.0      39.599585      11.360811      21.0      29.00      40.0      49.00       60.0
+loan_tenure_months      500.0      19.908000      21.286092     -12.0       6.00      18.0      36.00       60.0
+existing_loans          485.0       2.806186       1.741438       0.0       1.00       3.0       4.00        5.0
+
+📌 Outlier Detection (Z-score & IQR) + Plot paths:
+        numeric_column  zscore_outliers  iqr_outliers                                                  hist_plot                                                  box_plot
+   declared_income_num                0             0    dq_plots\loan_applications_declared_income_num_hist.png    dq_plots\loan_applications_declared_income_num_box.png
+       loan_amount_num                0             0        dq_plots\loan_applications_loan_amount_num_hist.png        dq_plots\loan_applications_loan_amount_num_box.png
+loan_tenure_months_num                0             0 dq_plots\loan_applications_loan_tenure_months_num_hist.png dq_plots\loan_applications_loan_tenure_months_num_box.png
+    existing_loans_num                0             0     dq_plots\loan_applications_existing_loans_num_hist.png     dq_plots\loan_applications_existing_loans_num_box.png
+        application_id                0             0         dq_plots\loan_applications_application_id_hist.png         dq_plots\loan_applications_application_id_box.png
+           customer_id                0             0            dq_plots\loan_applications_customer_id_hist.png            dq_plots\loan_applications_customer_id_box.png
+                   age                0             0                    dq_plots\loan_applications_age_hist.png                    dq_plots\loan_applications_age_box.png
+    loan_tenure_months                0             0     dq_plots\loan_applications_loan_tenure_months_hist.png     dq_plots\loan_applications_loan_tenure_months_box.png
+        existing_loans                0             0         dq_plots\loan_applications_existing_loans_hist.png         dq_plots\loan_applications_existing_loans_box.png
+
+
+======================================================================
+TABLE: transactions
+======================================================================
+Rows: 6366 | Columns: 7
+
+📌 Column Data Types:
+            column          dtype
+    transaction_id          int64
+       customer_id          int64
+  transaction_date         object
+  transaction_type         object
+transaction_amount         object
+   account_balance         object
+        created_at datetime64[ns]
+
+📌 Missing Values (Top 15):
+                    missing_count  missing_pct
+transaction_type             2095        32.91
+account_balance               197         3.09
+transaction_amount            173         2.72
+transaction_date                0         0.00
+customer_id                     0         0.00
+transaction_id                  0         0.00
+created_at                      0         0.00
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id', 'transaction_date', 'transaction_type', 'transaction_amount']): 0
+
+✅ Saved duplicates-removed file: cleaned_transactions.csv
+
+📌 Numeric Summary (describe):
+                         count           mean           std       min        25%       50%        75%       max
+transaction_amount_num  5878.0   12674.591528  27101.947241     203.0    5236.50   10473.0   15297.50  485700.0
+account_balance_num     5856.0   38059.548327  57987.252703       0.0    7428.00   27717.0   47078.25  503351.0
+transaction_id          6366.0    3183.500000   1837.850239       1.0    1592.25    3183.5    4774.75    6366.0
+customer_id             6366.0  100249.567546    144.025155  100000.0  100123.25  100251.0  100375.00  100499.0
+
+📌 Outlier Detection (Z-score & IQR) + Plot paths:
+        numeric_column  zscore_outliers  iqr_outliers                                             hist_plot                                             box_plot
+transaction_amount_num               55            65 dq_plots\transactions_transaction_amount_num_hist.png dq_plots\transactions_transaction_amount_num_box.png
+   account_balance_num              142           207    dq_plots\transactions_account_balance_num_hist.png    dq_plots\transactions_account_balance_num_box.png
+        transaction_id                0             0         dq_plots\transactions_transaction_id_hist.png         dq_plots\transactions_transaction_id_box.png
+           customer_id                0             0            dq_plots\transactions_customer_id_hist.png            dq_plots\transactions_customer_id_box.png
+
+
+======================================================================
+TABLE: credit_bureau_reports
+======================================================================
+Rows: 500 | Columns: 8
+
+📌 Column Data Types:
+                  column          dtype
+        bureau_record_id          int64
+             customer_id          int64
+            credit_score         object
+       enquiries_last_6m          int64
+credit_utilization_ratio         object
+ total_outstanding_loans          int64
+total_outstanding_amount         object
+              created_at datetime64[ns]
+
+📌 Missing Values (Top 15):
+                          missing_count  missing_pct
+credit_score                         28          5.6
+total_outstanding_amount             23          4.6
+credit_utilization_ratio             22          4.4
+bureau_record_id                      0          0.0
+enquiries_last_6m                     0          0.0
+customer_id                           0          0.0
+total_outstanding_loans               0          0.0
+created_at                            0          0.0
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id']): 0
+
+✅ Saved duplicates-removed file: cleaned_credit_bureau_reports.csv
+
+📌 Numeric Summary (describe):
+                              count           mean            std       min        25%        50%          75%       max
+credit_score_num              472.0     603.921610     197.236740      50.0     442.00     599.50     756.2500    1200.0
+credit_utilization_ratio_num  478.0       0.498808       0.331343      -0.5       0.24       0.49       0.7675       1.5
+total_outstanding_amount_num  449.0  196964.561247  188681.520117       0.0   54272.00  135691.00  286796.0000  749245.0
+enquiries_last_6m_num         500.0       6.302000       3.797319       0.0       3.00       7.00      10.0000      12.0
+total_outstanding_loans_num   500.0       2.532000       1.734067       0.0       1.00       2.00       4.0000       5.0
+bureau_record_id              500.0     250.500000     144.481833       1.0     125.75     250.50     375.2500     500.0
+customer_id                   500.0  100249.500000     144.481833  100000.0  100124.75  100249.50  100374.2500  100499.0
+enquiries_last_6m             500.0       6.302000       3.797319       0.0       3.00       7.00      10.0000      12.0
+total_outstanding_loans       500.0       2.532000       1.734067       0.0       1.00       2.00       4.0000       5.0
+
+📌 Outlier Detection (Z-score & IQR) + Plot paths:
+              numeric_column  zscore_outliers  iqr_outliers                                                            hist_plot                                                            box_plot
+            credit_score_num                7             0             dq_plots\credit_bureau_reports_credit_score_num_hist.png             dq_plots\credit_bureau_reports_credit_score_num_box.png
+credit_utilization_ratio_num               13             0 dq_plots\credit_bureau_reports_credit_utilization_ratio_num_hist.png dq_plots\credit_bureau_reports_credit_utilization_ratio_num_box.png
+total_outstanding_amount_num                0            17 dq_plots\credit_bureau_reports_total_outstanding_amount_num_hist.png dq_plots\credit_bureau_reports_total_outstanding_amount_num_box.png
+       enquiries_last_6m_num                0             0        dq_plots\credit_bureau_reports_enquiries_last_6m_num_hist.png        dq_plots\credit_bureau_reports_enquiries_last_6m_num_box.png
+ total_outstanding_loans_num                0             0  dq_plots\credit_bureau_reports_total_outstanding_loans_num_hist.png  dq_plots\credit_bureau_reports_total_outstanding_loans_num_box.png
+            bureau_record_id                0             0             dq_plots\credit_bureau_reports_bureau_record_id_hist.png             dq_plots\credit_bureau_reports_bureau_record_id_box.png
+                 customer_id                0             0                  dq_plots\credit_bureau_reports_customer_id_hist.png                  dq_plots\credit_bureau_reports_customer_id_box.png
+           enquiries_last_6m                0             0            dq_plots\credit_bureau_reports_enquiries_last_6m_hist.png            dq_plots\credit_bureau_reports_enquiries_last_6m_box.png
+     total_outstanding_loans                0             0      dq_plots\credit_bureau_reports_total_outstanding_loans_hist.png      dq_plots\credit_bureau_reports_total_outstanding_loans_box.png
+

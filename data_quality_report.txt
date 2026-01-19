@@ -1,0 +1,100 @@
+✅ DATA QUALITY VALIDATION REPORT
+Generated at: 2026-01-18 15:06:40.465715
+
+============================================================
+TABLE: loan_applications
+============================================================
+Total rows: 500
+Total columns: 14
+
+📌 Missing Values (Top 10 columns):
+                       missing_count  missing_pct
+gender                            96         19.2
+employment_type                   73         14.6
+delinquency_count_12m             39          7.8
+declared_income                   35          7.0
+delinquency_count_6m              25          5.0
+last_delinquency_date             24          4.8
+loan_amount                       21          4.2
+age                               18          3.6
+existing_loans                    15          3.0
+customer_id                        0          0.0
+
+📌 Schema Validation:
+Missing Columns: []
+Extra Columns: []
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id']): 0
+
+📌 Outlier Detection:
+         column  zscore_outliers  iqr_outliers
+declared_income                0             0
+    loan_amount                0             0
+
+✅ Cleaned table saved: cleaned_loan_applications.csv
+
+============================================================
+TABLE: transactions
+============================================================
+Total rows: 6366
+Total columns: 7
+
+📌 Missing Values (Top 10 columns):
+                    missing_count  missing_pct
+transaction_type             2095        32.91
+account_balance               197         3.09
+transaction_amount            173         2.72
+transaction_date                0         0.00
+customer_id                     0         0.00
+transaction_id                  0         0.00
+created_at                      0         0.00
+
+📌 Schema Validation:
+Missing Columns: []
+Extra Columns: []
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id', 'transaction_date', 'transaction_type', 'transaction_amount']): 0
+
+📌 Outlier Detection:
+            column  zscore_outliers  iqr_outliers
+transaction_amount               55            65
+   account_balance              142           207
+
+✅ Cleaned table saved: cleaned_transactions.csv
+
+============================================================
+TABLE: credit_bureau_reports
+============================================================
+Total rows: 500
+Total columns: 8
+
+📌 Missing Values (Top 10 columns):
+                          missing_count  missing_pct
+credit_score                         28          5.6
+total_outstanding_amount             23          4.6
+credit_utilization_ratio             22          4.4
+bureau_record_id                      0          0.0
+enquiries_last_6m                     0          0.0
+customer_id                           0          0.0
+total_outstanding_loans               0          0.0
+created_at                            0          0.0
+
+📌 Schema Validation:
+Missing Columns: []
+Extra Columns: []
+
+📌 Duplicate Check:
+Full row duplicates: 0
+Subset duplicates (['customer_id']): 0
+
+📌 Outlier Detection:
+                  column  zscore_outliers  iqr_outliers
+            credit_score                7             0
+credit_utilization_ratio               13             0
+total_outstanding_amount                0            17
+
+✅ Cleaned table saved: cleaned_credit_bureau_reports.csv
